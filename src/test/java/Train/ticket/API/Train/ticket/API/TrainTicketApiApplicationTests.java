@@ -39,15 +39,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	public void getReceiptTest() throws Exception {
 		// Create a user and purchase a ticket before the test
 		User user = new User();
-		user.setFirstName("Jane");
-		user.setLastName("Doe");
-		user.setEmail("jane.doe@example.com");
+		user.setFirstName("Ayush");
+		user.setLastName("Kumar");
+		user.setEmail("ayushsj17@gmail.com");
 		trainService.purchaseTicket(user);
 
 		// Fetch the receipt
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/train/receipt/jane.doe@example.com"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/train/receipt/ayushsj17@gmail.com"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.user.firstName").value("Jane"))
+				.andExpect(jsonPath("$.user.firstName").value("Ayush"))
 				.andExpect(jsonPath("$.user.ticket").doesNotExist());
 	}
 
