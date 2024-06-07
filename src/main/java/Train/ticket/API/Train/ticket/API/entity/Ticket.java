@@ -1,4 +1,5 @@
 package Train.ticket.API.Train.ticket.API.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,8 @@ public class Ticket {
     private String fromLocation;
     private String toLocation;
     @OneToOne
-    @JoinColumn(name = "user_id", unique = true)
+    @JoinColumn(name = "user_id", unique = true ,referencedColumnName = "id")
+    @JsonManagedReference
     private User user;
     private double price;
     private String seat;

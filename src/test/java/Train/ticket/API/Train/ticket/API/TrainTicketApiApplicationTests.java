@@ -35,18 +35,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 					.andExpect(jsonPath("$.user.firstName").value("Ayush"));
 		}
 
-		@Test
-		public void getReceiptTest() throws Exception {
-			User user = new User();
-			user.setFirstName("Ayush");
-			user.setLastName("Kumar");
-			user.setEmail("ayushsj17@gmail.com");
-			trainService.purchaseTicket(user);
+	@Test
+	public void getReceiptTest() throws Exception {
+		// Create a user and purchase a ticket before the test
+		User user = new User();
+		user.setFirstName("Jane");
+		user.setLastName("Doe");
+		user.setEmail("jane.doe@example.com");
+		trainService.purchaseTicket(user);
 
-			mockMvc.perform(MockMvcRequestBuilders.get("/api/train/receipt/ayushsj17@gmail.com"))
-					.andExpect(status().isOk())
-					.andExpect(jsonPath("$.user.firstName").value("Ayush"));
-		}
+		// Fetch the receipt
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/train/receipt/jane.doe@example.com"))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.user.firstName").value("Jane"))
+				.andExpect(jsonPath("$.user.ticket").doesNotExist());
+	}
 
 		@Test
 		public void removeUserTest() throws Exception {
