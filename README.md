@@ -55,6 +55,7 @@ Welcome to the Train Ticket API! This project is a simple Spring Boot applicatio
 #### Purchase a Ticket
 
 - **URL:** `/api/train/purchase`
+- http://localhost:8080/api/train/purchase
 - **Method:** `POST`
 - **Request Body:**
     ```json
@@ -80,8 +81,8 @@ Welcome to the Train Ticket API! This project is a simple Spring Boot applicatio
     ```
 
 #### Get Receipt
-
 - **URL:** `/api/train/receipt/{email}`
+- http://localhost:8080/api/train/receipt/ayushsj17@gmail.com
 - **Method:** `GET`
 - **Response:**
     ```json
@@ -101,6 +102,7 @@ Welcome to the Train Ticket API! This project is a simple Spring Boot applicatio
 #### Get Users by Section
 
 - **URL:** `/api/train/users/{section}`
+- http://localhost:8080/api/train/users/A
 - **Method:** `GET`
 - **Response:**
     ```json
@@ -122,11 +124,13 @@ Welcome to the Train Ticket API! This project is a simple Spring Boot applicatio
 #### Remove a User
 
 - **URL:** `/api/train/remove/{email}`
+- http://localhost:8080/api/train/remove/hmehar98@gmail.com
 - **Method:** `DELETE`
 
 #### Modify Seat
 
 - **URL:** `/api/train/modify-seat`
+- http://localhost:8080/api/train/modify-seat?email=ayushsj17@gmail.com&newSeat=B1
 - **Method:** `PUT`
 - **Query Parameters:**
     - `email`: The user's email (e.g., `ayushsj17@gmail.com`)
