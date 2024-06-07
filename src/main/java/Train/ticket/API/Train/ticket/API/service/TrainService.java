@@ -7,6 +7,7 @@ import Train.ticket.API.Train.ticket.API.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class TrainService {
     private static final String[] SECTIONS = {"A", "B"};
     private int seatCounter = 1;
 
+    @Transactional
     public Ticket purchaseTicket(User user){
         userRepository.save(user);
         String seat= assignSeat();

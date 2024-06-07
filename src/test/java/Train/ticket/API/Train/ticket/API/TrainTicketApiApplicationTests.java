@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 		private TrainService trainService;
 
 		@Test
+		@Transactional
 		public void purchaseTicketTest() throws Exception {
 			String userJson = "{\"firstName\":\"Ayush\",\"lastName\":\"Kumar\",\"email\":\"ayushsj17@gmail.com\"}";
 			mockMvc.perform(MockMvcRequestBuilders.post("/api/train/purchase")
